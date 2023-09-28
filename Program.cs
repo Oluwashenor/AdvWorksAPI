@@ -1,3 +1,6 @@
+using AdvWorksAPI.EntityLayer;
+using AdvWorksAPI.RepositoryLayer;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -16,10 +19,29 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
+
+app.MapGet("/api/HelloAll", () => "Hello Every one");
+app.MapGet("/api/HelloWorld", () => Results.Ok("Hello World"));
+app.MapGet("/api/HelloPerson", (string name) => Results.Ok($"Hello {name}"));
+
+
+app.MapGet("/api/product/{id:int}", (int id) =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    var product = new ProductRepository().Get(id);
+    if(product == null)
+    {
+        return Results.NotFound($"Product with Product Id {id} not found");
+    }
+    return Results.Ok(product);
+});
+
+app.MapGet("/api/product", () =>
+{
+    List<Product> products = new ProductRepository().Get();
+    if (products == null)
+        return Results.NotFound("No Products found");
+    return Results.Ok();
+});
 
 
 app.Run();
