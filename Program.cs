@@ -20,9 +20,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 
-app.MapGet("/api/HelloAll", () => "Hello Every one");
-app.MapGet("/api/HelloWorld", () => Results.Ok("Hello World"));
-app.MapGet("/api/HelloPerson", (string name) => Results.Ok($"Hello {name}"));
+app.MapGet("/api/HelloAll", () => "Hello Every one").WithTags("Simple");
+app.MapGet("/api/HelloWorld", () => Results.Ok("Hello World")).WithTags("Simple");
+app.MapGet("/api/HelloPerson", (string name) => Results.Ok($"Hello {name}")).WithTags("Simple");
 
 
 app.MapGet("/api/product/{id:int}", (int id) =>
@@ -33,7 +33,7 @@ app.MapGet("/api/product/{id:int}", (int id) =>
         return Results.NotFound($"Product with Product Id {id} not found");
     }
     return Results.Ok(product);
-});
+}).WithTags("Products").Produces(200).Produces(404).Produces<Product>();
 
 app.MapGet("/api/product", () =>
 {
@@ -41,7 +41,7 @@ app.MapGet("/api/product", () =>
     if (products == null)
         return Results.NotFound("No Products found");
     return Results.Ok();
-});
+}).WithTags("Products").Produces(200).Produces(404).Produces<List<Product>>();
 
 
 app.Run();
