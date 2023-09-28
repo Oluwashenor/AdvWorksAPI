@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvWorksAPI", "AdvWorksAPI.csproj", "{D777ED01-32DC-4740-A2B6-A5566588EE43}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D777ED01-32DC-4740-A2B6-A5566588EE43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D777ED01-32DC-4740-A2B6-A5566588EE43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D777ED01-32DC-4740-A2B6-A5566588EE43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D777ED01-32DC-4740-A2B6-A5566588EE43}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E2D950CA-694E-43FB-B522-AE43A5F5BA8F}
+	EndGlobalSection
+EndGlobal
