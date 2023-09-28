@@ -38,10 +38,28 @@ app.MapGet("/api/product/{id:int}", (int id) =>
 app.MapGet("/api/product", () =>
 {
     List<Product> products = new ProductRepository().Get();
-    if (products == null)
+    if (products == null || products.Count == 0)
         return Results.NotFound("No Products found");
     return Results.Ok();
 }).WithTags("Products").Produces(200).Produces(404).Produces<List<Product>>();
+
+app.MapGet("/api/customer/{id:int}", (int id) =>
+{
+    var customer = new CustomerRepository().Get(id);
+    if (customer == null)
+    {
+        return Results.NotFound($"Customer with Id {id} not found");
+    }
+    return Results.Ok(customer);
+}).WithTags("Customers").Produces(200).Produces(404).Produces<Customer>();
+
+app.MapGet("/api/customer", () =>
+{
+    List<Customer> customers = new CustomerRepository().Get();
+    if (customers == null || customers.Count == 0)
+        return Results.NotFound("No Customers found");
+    return Results.Ok();
+}).WithTags("Customers").Produces(200).Produces(404).Produces<List<Customer>>();
 
 
 app.Run();
